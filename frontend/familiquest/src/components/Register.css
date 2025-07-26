@@ -1,15 +1,99 @@
+body {
+  background: #0000;
+  min-height: 100vh;
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
 .register-container {
-    position: center;
-    color: #9929ea;
-    padding: 3rem;
-    width: 50%;
-    margin: 0 auto;
-    border-width: 1px;
-    border-style: solid;
-    border-radius: 1.5rem;
-    box-shadow: 0 4px 24px rgba(153, 41, 234, 0.10);
+  background: rgb(255,255,255,0.95);
+  color: rgb(153, 41, 234);
+  padding: 2.5rem 2rem;
+  width: 100%;
+  margin: auto;
+  box-sizing: content-box;
+  border-radius: 2rem;
+  box-shadow: 0 8px 32px rgba(153, 41, 234, 0.18);
+  border: 2px solid rgb(204, 102, 218);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.register-container h2 {
+  font-size: 2.2rem;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  color: rgb(153, 41, 234);
+  letter-spacing: 1px;
+}
+
+form {
+  width: 70%;
 }
 
 .input-group {
-    padding: 10px;
+  margin-bottom: 1.5rem;
+  text-align: left;
 }
+
+.input-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: rgb(0, 0, 0);
+  font-weight: 600;
+}
+
+.input-group input[type="text"],
+.input-group input[type="password"] {
+  width: 100%;
+  padding: 0.7rem 1rem;
+  border: 1px solid rgb(204, 102, 218);
+  border-radius: 8px;
+  font-size: 1rem;
+  background: rgb(250, 235, 146, 0.2);
+  margin-bottom: 0.2rem;
+  transition: border 0.2s;
+}
+
+.input-group input[type="text"]:focus,
+.input-group input[type="password"]:focus {
+  border: 2px solid rgb(153, 41, 234);
+  outline: none;
+}
+
+.input-group div {
+  display: flex;
+  gap: 2rem;
+  margin-top: 0.5rem;
+}
+
+.input-group input[type="radio"] {
+  accent-color: rgb(153, 41, 234);
+  margin-right: 0.4rem;
+}
+
+.register-button {
+  background: linear-gradient(90deg, rgb(153, 41, 234), rgb(204, 102, 218));
+  color: white;
+  padding: 0.9rem 2.5rem;
+  border: none;
+  border-radius: 999px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 2px 12px rgba(204, 102, 218, 0.18);
+  transition: background 0.2s, transform 0.2s;
+  margin-top: 1rem;
+  width: 100%;
+}
+
+.register-button:hover {
+  background: linear-gradient(90deg, rgb(204, 102, 218), rgb(153, 41, 234));
+  transform: scale(1.04);
+}
+

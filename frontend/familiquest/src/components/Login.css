@@ -1,75 +1,155 @@
 body {
-    background-color:#0000;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    font-family: Arial, sans-serif;
+  background: #f5f5f5;
+  min-height: 100vh;
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .login-container {
-    position: center;
-    color: #9929ea;
-    padding: 3rem;
-    width: 50%;
-    margin: 0 auto;
-    border-width: 1px;
-    border-style: solid;
-    border-radius: 1.5rem;
-    box-shadow: 0 4px 24px rgba(153, 41, 234, 0.10);
+  background: rgba(255, 255, 255, 0.95);
+  color: rgb(153, 41, 234);
+  padding: 2.5rem 2rem;
+  width: 90%;
+  max-width: 450px;
+  border-radius: 2rem;
+  box-shadow: 0 8px 32px rgba(153, 41, 234, 0.18);
+  border: 2px solid rgb(204, 102, 218);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-h2 {
-    color: rgb(153, 41, 234);
-    text-align: center;
+.login-container h2 {
+  font-size: 2.2rem;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  color: rgb(153, 41, 234);
+  letter-spacing: 1px;
 }
 
-.input-field {
-    margin-bottom: 15px;
+form {
+  width: 100%;
 }
 
-.input-field label {
-    display: block;
-    margin-bottom: 5px;
-    color: rgb(0, 0, 0);
+.input-group {
+  margin-bottom: 1.5rem;
+  text-align: left;
 }
 
-.input-field input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid rgb(204, 102, 218);
-    border-radius: 4px;
+.input-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: rgb(0, 0, 0);
+  font-weight: 600;
 }
 
-.button {
-    background-color: rgb(153, 41, 234);
-    color: white;
-    padding: 10px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    width: 100%;
+.input-group input[type="text"],
+.input-group input[type="password"] {
+  width: 90%;
+  padding: 0.7rem 1rem;
+  border: 1px solid rgb(204, 102, 218);
+  border-radius: 8px;
+  font-size: 1rem;
+  background: rgba(250, 235, 146, 0.2);
+  margin-bottom: 0.2rem;
+  transition: border 0.2s;
 }
 
-.button:hover {
-    background-color: rgb(204, 102, 218);
+.input-group input[type="text"]:focus,
+.input-group input[type="password"]:focus {
+  border: 2px solid rgb(153, 41, 234);
+  outline: none;
+  width: 90%;
 }
 
-.profile-selector {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 10px;
+.input-group div {
+  display: flex;
+  gap: 2rem;
+  margin-top: 0.5rem;
 }
 
-.profile-button {
-    background-color: rgb(204, 102, 218);
-    color: white;
-    border: none;
-    border-radius: 4px;
-    padding: 5px 10px;
-    cursor: pointer;
+.input-group input[type="radio"] {
+  accent-color: rgb(153, 41, 234);
+  margin-right: 0.4rem;
 }
 
-.profile-button:hover {
-    background-color: rgb(153, 41, 234);
+.login-button {
+  background: linear-gradient(90deg, rgb(153, 41, 234), rgb(204, 102, 218));
+  color: white;
+  padding: 0.9rem 2.5rem;
+  border: none;
+  border-radius: 999px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 2px 12px rgba(204, 102, 218, 0.18);
+  transition: background 0.2s, transform 0.2s;
+  margin-top: 1rem;
+  width: 100%;
+}
+
+.login-button:hover {
+  background: linear-gradient(90deg, rgb(204, 102, 218), rgb(153, 41, 234));
+  transform: scale(1.04);
+}
+
+/* Style wrapper for radio buttons */
+.radio-option {
+  position: relative;
+  padding-left: 2rem;
+  cursor: pointer;
+  font-size: 1rem;
+  user-select: none;
+  color: rgb(0, 0, 0);
+  font-weight: 600;
+}
+
+/* Hide default radio */
+.radio-option input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Custom circle */
+.radio-option .checkmark {
+  position: absolute;
+  top: 1px;
+  left: 0;
+  height: 1.2rem;
+  width: 1.2rem;
+  background-color: rgba(250, 235, 146, 0.4);
+  border: 2px solid rgb(204, 102, 218);
+  border-radius: 50%;
+  transition: 0.3s;
+}
+
+/* When checked, change background */
+.radio-option input:checked ~ .checkmark {
+  background-color: rgb(153, 41, 234);
+  border-color: rgb(204, 102, 218);
+}
+
+/* Inner dot */
+.radio-option .checkmark::after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.radio-option input:checked ~ .checkmark::after {
+  display: block;
+}
+
+.radio-option .checkmark::after {
+  top: 4px;
+  left: 4px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: white;
+  position: absolute;
 }

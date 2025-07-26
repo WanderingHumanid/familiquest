@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import ProfileSelector from './ProfileSelector';
 import './Login.css';
 
 const Login = () => {
@@ -10,12 +9,12 @@ const Login = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(`Logging in as ${profile}: ${username}`);
+        // Redirect logic can be added here
     };
 
     return (
         <div className="login-container">
             <h2>Login</h2>
-            <ProfileSelector setProfile={setProfile} />
             <form onSubmit={handleSubmit}>
                 <div className="input-group">
                     <label htmlFor="username">Username:</label>
@@ -36,6 +35,33 @@ const Login = () => {
                         onChange={(e) => setPassword(e.target.value)}
                         required
                     />
+                </div>
+                <div className="input-group">
+                    <label>Profile Type:</label>
+                    <div>
+                        <label>
+                            <input
+                                type="radio"
+                                name="profile"
+                                value="parent"
+                                checked={profile === 'parent'}
+                                onChange={() => setProfile('parent')}
+                                required
+                            />
+                            Parent
+                        </label>
+                        <label style={{ marginLeft: '1rem' }}>
+                            <input
+                                type="radio"
+                                name="profile"
+                                value="child"
+                                checked={profile === 'child'}
+                                onChange={() => setProfile('child')}
+                                required
+                            />
+                            Child
+                        </label>
+                    </div>
                 </div>
                 <button type="submit" className="login-button">Login</button>
             </form>

@@ -17,13 +17,12 @@ body {
 
 /* Hero Section */
 .hero {
-  background: linear-gradient(120deg, rgb(255,255,255) 80%, rgb(204,102,218) 100%);
   border-radius: 2rem;
   box-shadow: 0 8px 32px rgba(153, 41, 234, 0.15);
   padding: 3rem 2rem;
   max-width: 600px;
   margin-bottom: 2rem;
-  margin-top: 600px;
+  margin-top: 90px;
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -93,7 +92,6 @@ body {
 }
 
 .feature-card {
-  background: linear-gradient(120deg, rgb(255,255,255) 80%, rgb(204,102,218) 100%);
   padding: 2rem 1.5rem;
   border-radius: 1.5rem;
   box-sizing: content-box;
@@ -112,9 +110,10 @@ body {
 
 .feature-card h4 {
   font-size: 1.3rem;
-  color: rgb(153, 41, 234);
+  color: #9929ea;
   margin-bottom: 1rem;
   font-weight: 700;
+  justify-content: center;
 }
 
 .feature-card ul {
@@ -140,6 +139,10 @@ body {
 }
 
 .footer {
-    text-align: center;
+    justify-content: center;
     padding: 1rem;
+    color: #9929ea;
+    width: 100%;
+    display: flex;
+    margin: 0;
 }
