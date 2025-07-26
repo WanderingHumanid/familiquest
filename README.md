@@ -1,72 +1,99 @@
 # FamiliQuest
 
-**Turn Your Family Chores into Epic Adventures!**
+*Turn Your Family Chores into Epic Adventures!*
 
-*Level up your family life, one quest at a time.*
-
----
-
-## 🚀 The MVP Concept
-
-Welcome to **FamiliQuest**, an application designed to transform everyday household tasks into an engaging and collaborative role-playing game for the entire family. For the **"Game of Life" hackathon**, this Minimum Viable Product (MVP) focuses on the core gameplay loop: creating a simple, fun, and balanced system for assigning chores, tracking progress, and rewarding consistency.
-
-In FamiliQuest, parents act as **Quest Masters**, assigning tasks to their children, the **Adventurers**. The goal is to foster responsibility and teamwork through positive reinforcement and gentle accountability.
+A gamified chore management application built for the "Game of Life" hackathon. FamiliQuest transforms household tasks into a collaborative role-playing game, fostering responsibility and teamwork within the family.
 
 ---
 
-## ✨ Key MVP Features
+### The Problem
 
-### 1. Simplified Quest & Task System
-
-- **Quest Master Controls:** Parents can easily assign tasks from a curated list of common household chores (e.g., "Make Your Bed," "Help with Dishes," "Feed the Pet"), making setup quick and effortless.
-- **Proof of Completion:** For certain tasks, parents can require a photo to be uploaded as proof. The quest is only marked as complete after parental verification.
-- **Wellness Habit:** A special, recurring quest to track a healthy sleep schedule, rewarding children with significant XP for consistency.
-- **Parental Quests:** Parents can also assign quests to themselves to model teamwork and shared responsibility.
-
-### 2. Gentle Consequence & Energy System
-
-- **Stamina Bar:** Each Adventurer has a "Stamina" bar. Completing quests costs a small amount of Stamina, which regenerates automatically over time. This prevents burnout and teaches energy management.
-- **Missed Quest Consequences:** To encourage follow-through, missing a quest has a gentle consequence:
-  - **Streak Loss:** The daily streak bonus is reset to zero.
-  - **Stamina Cooldown:** Stamina regeneration is temporarily slowed for a short period. This system avoids harsh punishment while still making actions meaningful.
-
-### 3. Persona & Progression
-
-- **Build Your Persona:** Completing quests earns Experience Points (XP), which contributes to a user's level and in-app persona.
-- **Customizable Avatars:** Each family member gets a personal avatar. Leveling up unlocks new cosmetic items and accessories.
-- **Experience & Levels:** Adventurers earn XP for every completed quest, allowing them to level up and unlock new avatar items.
-- **Streak Bonuses:** To motivate consistency, the system rewards daily streaks. Completing quests for several days in a row grants escalating XP bonuses.
-- **Badges & Titles:** Key milestones and achievements award unique, collectible badges (e.g., "5-Day Streak!") and titles (e.g., "Tidiness Apprentice").
-
-### 4. The Family Unit: Stronger Together
-
-- **Collaborative Family Persona:** The family itself has a collective profile that levels up as its members complete quests. This encourages teamwork over individual competition.
-- **Weekly Family Quest:** Instead of complex "Boss Battles," the MVP features a single, larger "Family Quest" each week (e.g., "Tidy the Living Room Together"). Completing it gives a massive XP boost to the Family Persona and unlocks a group reward, like choosing a weekend movie or meal.
+Household chores are often a source of friction and negotiation in families. Traditional methods like chore charts can feel like a burden, leading to a lack of motivation for children and added stress for parents. This can make it difficult to teach responsibility and teamwork effectively.
 
 ---
 
-## 🛠️ Future Scopes
+### Our Solution
 
-### 1. 🧠 Smart Quest Suggestions (AI-Based)
+**FamiliQuest** reframes chores as "quests" in a family-wide adventure.
 
-Leverage AI/ML to automatically recommend age-appropriate, skill-relevant quests for each child based on:
-- Past performance and skill trees.
-- Calendar events (e.g., exam week = more academic quests).
-- Season or time of year (e.g., “Clean the yard” during monsoons).
-- Behavioral analytics to balance fun and responsibility.
+- **Parents** act as **Quest Masters**, assigning tasks and verifying completion.
+- **Children** become **Adventurers**, completing quests to earn Experience Points (XP), level up their avatars, and unlock rewards.
+- The **Family** works together on larger goals, strengthening their bond.
 
-### 2. 📸 OCR-Based Task Verification
+This approach uses positive reinforcement and gentle accountability to make chores engaging and rewarding, turning a mundane routine into a fun, collaborative game.
 
-Introduce Optical Character Recognition (OCR) to verify task completion through images. For example:
-- Homework snapshots auto-verified by detecting subject keywords.
-- “Clean Room” photo can be checked for clutter detection or changes over time.
-- Combine with AI to generate a cleanliness score.
 
-This reduces parent workload while increasing trust and automation.
+### Key Features
 
-### 3. 📲 Mobile App Integration (React Native)
+#### 1. Quest & Task System
+- **Quest Master Controls:** Parents assign tasks from a pre-made list of common chores.
+- **Proof of Completion:** Option to require a photo upload for verification on certain tasks.
+- **Wellness Habit:** A special recurring quest to track healthy habits like sleep schedules.
+- **Parental Quests:** Parents can assign quests to themselves to model teamwork.
 
-Convert the web app into a full-fledged mobile application using React Native for:
-- Push notifications for quest reminders or streak alerts.
-- Camera access for instant proof submissions.
-- Offline support for better accessibility.
+#### 2. Gentle Consequence & Energy System
+- **Stamina Bar:** Completing quests costs Stamina, which regenerates over time to teach energy management and prevent burnout.
+- **Missed Quest Consequences:** Instead of punishment, missing a quest resets the daily streak bonus and temporarily slows Stamina regeneration.
+
+#### 3. Persona & Progression
+- **Customizable Avatars:** Each family member customizes a personal avatar.
+- **Experience & Levels:** Earn XP for completed quests to level up and unlock new cosmetic items.
+- **Streak Bonuses:** Daily streaks grant escalating XP bonuses to encourage consistency.
+- **Badges & Titles:** Milestones unlock unique, collectible badges and titles.
+
+#### 4. The Family Unit
+- **Collaborative Family Persona:** The entire family has a collective profile that levels up as members complete quests.
+- **Weekly Family Quest:** A large, collaborative quest each week that boosts the family level and unlocks a group reward (e.g., choosing a weekend movie).
+
+---
+
+### Tech Stack
+
+| Category      | Technology Used         |
+|---------------|-------------------------|
+| **Frontend** | [e.g., React, Vite]     |
+| **Backend** | [e.g., Node.js, Express]|
+| **Database** | [e.g., MongoDB, SQLite] |
+| **Styling** | [e.g., CSS, Tailwind]   |
+| **Deployment**| [e.g., Vercel, Netlify] |
+
+---
+
+### Getting Started
+
+To run this project locally, follow these steps:
+
+1.  **Clone the repository:**
+    ```bash
+    git clone [https://github.com/](https://github.com/)[WanderingHumanid]/familiquest.git
+    ```
+
+2.  **Navigate to the project directory:**
+    ```bash
+    cd FamiliQuest
+    ```
+
+3.  **Install dependencies:**
+    ```bash
+    npm install
+    ```
+
+4.  **Start the development server:**
+    ```bash
+    npm run dev
+    ```
+
+5. Open your browser and go to `http://localhost:3000`.
+
+---
+
+### Future Scope
+
+-   **Smart Quest Suggestions (AI-Based):** Leverage AI/ML to recommend age-appropriate quests based on past performance, calendar events, and behavioral analytics.
+-   **OCR-Based Task Verification:** Use Optical Character Recognition (OCR) to automatically verify image-based tasks, such as homework snapshots or room cleanliness.
+-   **Mobile App Integration (React Native):** Develop a cross-platform mobile app with push notifications and offline support.
+
+---
+
+### Team Technocrats
+
