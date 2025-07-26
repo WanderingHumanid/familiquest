@@ -1,71 +1,110 @@
 # FamiliQuest
 
-*Turn Your Family Chores into Epic Adventures!*
+**Making Family Tasks Rewarding, One Quest at a Time**
 
-A gamified chore management application built for the "Game of Life" hackathon. FamiliQuest transforms household tasks into a collaborative role-playing game, fostering responsibility and teamwork within the family.
-
----
-
-### The Problem
-
-Household chores are often a source of friction and negotiation in families. Traditional methods like chore charts can feel like a burden, leading to a lack of motivation for children and added stress for parents. This can make it difficult to teach responsibility and teamwork effectively.
+FamiliQuest is a chore and habit management app that uses light gamification to help families build healthy routines and shared accountability. Designed for all ages, the app turns everyday responsibilities into structured, trackable **quests**, motivating children and parents alike through progress, achievements, and gentle feedback.
 
 ---
 
-### Our Solution
+## The Problem
 
-**FamiliQuest** reframes chores as "quests" in a family-wide adventure.
-
-- **Parents** act as **Quest Masters**, assigning tasks and verifying completion.
-- **Children** become **Adventurers**, completing quests to earn Experience Points (XP), level up their avatars, and unlock rewards.
-- The **Family** works together on larger goals, strengthening their bond.
-
-This approach uses positive reinforcement and gentle accountability to make chores engaging and rewarding, turning a mundane routine into a fun, collaborative game.
-
-
-### Key Features
-
-#### 1. Quest & Task System
-- **Quest Master Controls:** Parents assign tasks from a pre-made list of common chores.
-- **Proof of Completion:** Option to require a photo upload for verification on certain tasks.
-- **Wellness Habit:** A special recurring quest to track healthy habits like sleep schedules.
-- **Parental Quests:** Parents can assign quests to themselves to model teamwork.
-
-#### 2. Gentle Consequence & Energy System
-- **Stamina Bar:** Completing quests costs Stamina, which regenerates over time to teach energy management and prevent burnout.
-- **Missed Quest Consequences:** Instead of punishment, missing a quest resets the daily streak bonus and temporarily slows Stamina regeneration.
-
-#### 3. Persona & Progression
-- **Customizable Avatars:** Each family member customizes a personal avatar.
-- **Experience & Levels:** Earn XP for completed quests to level up and unlock new cosmetic items.
-- **Streak Bonuses:** Daily streaks grant escalating XP bonuses to encourage consistency.
-- **Badges & Titles:** Milestones unlock unique, collectible badges and titles.
-
-#### 4. The Family Unit
-- **Collaborative Family Persona:** The entire family has a collective profile that levels up as members complete quests.
-- **Weekly Family Quest:** A large, collaborative quest each week that boosts the family level and unlocks a group reward (e.g., choosing a weekend movie).
+Traditional chore charts often fall short:
+- Children lose motivation without consistent positive feedback.
+- Parents face overhead in assigning and tracking responsibilities.
+- There's little sense of shared progress or recognition.
 
 ---
 
-### Tech Stack
+## Our Solution
 
-| Category      | Technology Used         |
-|---------------|-------------------------|
-| **Frontend** | [e.g., React, Vite]     |
-| **Backend** | [e.g., Node.js, Express]|
-| **Database** | [e.g., MongoDB, SQLite] |
-| **Styling** | [e.g., CSS, Tailwind]   |
-| **Deployment**| [e.g., Vercel, Netlify] |
+FamiliQuest offers a simple, fun, and collaborative way for families to organize tasks.
+
+- **Parents** assign quests from a pre-made task list and verify completion.
+- **Children** complete quests to earn XP, unlock avatar items, and build habits.
+- The **Family** works together toward shared achievements and weekly goals.
 
 ---
 
-### Getting Started
+## Key Features
 
-To run this project locally, follow these steps:
+### 1. Task & Quest System
 
-1.  **Clone the repository:**
+- **Pre-defined Quests:** Parents assign tasks from a curated list (clean room, do homework, brush teeth, etc.) to reduce management time.
+- **Task Difficulty Levels:**
+  - Easy — 15 XP  
+  - Medium — 30 XP  
+  - Hard — 50 XP  
+- **Completion Proof (Optional):** Tasks can require a photo before marking as complete.
+- **Wellness Habits:** Supports recurring routines like tracking sleep or brushing teeth.
+- **Adult Participation:** Parents can assign and complete quests too, modeling shared responsibility.
+
+---
+
+### 2. Gentle Feedback System
+
+- **Streaks & XP Bonuses:** 
+
+- **Missed Quests:**
+  - Streak bonus resets
+  - Stamina regeneration slows temporarily (stamina = quest energy system)
+
+- **Stamina System:**
+  - Each quest consumes stamina (encourages pacing)
+  - Stamina regenerates daily or after breaks
+
+---
+
+### 3. Progression & Rewards
+
+- **XP-Based Leveling Curve:**
+  - Level 1 → 2 = 10 XP  
+  - Level 2 → 3 = 20 XP  
+  - Level 3 → 4 = 40 XP  
+  - Up to level 10 included in MVP  
+
+- **Points System:**
+  - Earn 10 points per 1 XP
+  - Use points to purchase avatar customizations
+
+- **Avatar Customization:**
+  - Start with a basic avatar
+  - Unlock new items (shirts, accessories, pets) by leveling up and spending points
+
+- **Achievements & Badges:**
+  - First Quest Completed
+  - 5-Day Streak
+  - Family Collaboration
+  - Cosmetic Collector (buy 5 items)
+
+---
+
+### 4. Family Dashboard
+
+- **Family View:** See each member’s progress, avatar, level, and badges in one place
+- **Shared Quests:** Weekly group tasks like “Clean the garage” or “Tidy the living room”
+- **Family Rewards:** Completing shared quests unlocks simple rewards like:
+  - Choose the weekend movie
+  - No chores on Sunday
+
+---
+
+## Tech Stack
+
+| Category      | Technology         |
+|---------------|--------------------|
+| Frontend      | ReactJS            |
+| Backend       | Python + Flask     |
+| Database      | SQLite             |
+| Styling       | CSS                |
+| Deployment    | Render             |
+
+---
+
+## Getting Started (Local Dev)
+
+1. **Clone the repository:**
     ```bash
-    git clone [https://github.com/](https://github.com/)[WanderingHumanid]/familiquest.git
+    git clone https://github.com/WanderingHumanid/familiquest.git
     ```
 
 2.  **Navigate to the project directory:**
@@ -87,6 +126,7 @@ To run this project locally, follow these steps:
 
 ---
 
+
 ### Future Scope
 
 -   **Smart Quest Suggestions (AI-Based):** Leverage AI/ML to recommend age-appropriate quests based on past performance, calendar events, and behavioral analytics.
@@ -96,4 +136,3 @@ To run this project locally, follow these steps:
 ---
 
 ### Team Technocrats
-
