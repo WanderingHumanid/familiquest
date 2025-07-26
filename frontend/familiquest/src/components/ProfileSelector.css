@@ -1,0 +1,28 @@
+.ProfileSelector {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: rgb(250, 235, 146);
+}
+
+.ProfileSelector h1 {
+    color: rgb(0, 0, 0);
+    margin-bottom: 20px;
+}
+
+.ProfileSelector button {
+    background-color: rgb(153, 41, 234);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.ProfileSelector button:hover {
+    background-color: rgb(204, 102, 218);
+}
