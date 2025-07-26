@@ -1,0 +1,24 @@
+body {
+  background-color: white;
+  color: #9929ea;
+  min-height: 100vh;
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.about-container {
+  background-color: rgb(255,255,255,0.95);
+  color: rgb(153, 41, 234);
+  padding: 2.5rem 2rem;
+  width: 100%;
+  margin: auto;
+  box-sizing: content-box;
+  border-radius: 2rem;
+  box-shadow: 0 8px 32px rgba(153, 41, 234, 0.18);
+  border: 2px solid rgb(204, 102, 218);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
