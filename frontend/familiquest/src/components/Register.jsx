@@ -1,24 +1,42 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useTaskContext } from './TaskContext';
+import './Login.css';
 
 const Register = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [profileType, setProfileType] = useState('');
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const { login } = useTaskContext();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Registration logic here (API call, etc.)
-    if (profileType === 'parent') {
-      navigate('/parent-dashboard');
-    } else if (profileType === 'child') {
-      navigate('/child-dashboard');
+    setError(null);
+    setLoading(true);
+    try {
+      // Register user
+      const res = await fetch('http://localhost:5000/api/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, password, role: profileType })
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.message || 'Registration failed');
+      // Auto-login after registration
+      await login(username, password, profileType);
+      navigate('/dashboard');
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
-    <div className="register-container">
+    <div className="login-container">
       <h2>Register</h2>
       <form onSubmit={handleSubmit}>
         <div className="input-group">
@@ -29,6 +47,7 @@ const Register = () => {
             value={username}
             onChange={e => setUsername(e.target.value)}
             required
+            disabled={loading}
           />
         </div>
         <div className="input-group">
@@ -39,11 +58,12 @@ const Register = () => {
             value={password}
             onChange={e => setPassword(e.target.value)}
             required
+            disabled={loading}
           />
         </div>
         <div className="input-group">
           <label>Profile Type:</label>
-          <div>
+          <div style={{ display: 'flex', gap: '2rem', marginTop: '0.5rem' }}>
             <label>
               <input
                 type="radio"
@@ -52,10 +72,11 @@ const Register = () => {
                 checked={profileType === 'parent'}
                 onChange={() => setProfileType('parent')}
                 required
+                disabled={loading}
               />
               Parent
             </label>
-            <label style={{ marginLeft: '1rem' }}>
+            <label>
               <input
                 type="radio"
                 name="profileType"
@@ -63,12 +84,16 @@ const Register = () => {
                 checked={profileType === 'child'}
                 onChange={() => setProfileType('child')}
                 required
+                disabled={loading}
               />
               Child
             </label>
           </div>
         </div>
-        <button type="submit" className="register-button">Register</button>
+        {error && <div className="error-message">{error}</div>}
+        <button type="submit" className="login-button" disabled={loading || !profileType}>
+          {loading ? 'Registering...' : 'Register'}
+        </button>
       </form>
     </div>
   );
