@@ -54,3 +54,21 @@
   color: rgb(204, 102, 218);
   border-bottom: 2px solid rgb(250, 235, 146);
 }
+
+.logout-btn {
+  background: none;
+  border: none;
+  color: #9929ea;
+  font-weight: 500;
+  cursor: pointer;
+  transition: color 0.3s;
+  padding-bottom: 0.2rem;
+  border-bottom: 2px solid transparent;
+  font-size: inherit;
+  font-family: inherit;
+}
+
+.logout-btn:hover {
+  color: rgb(204, 102, 218);
+  border-bottom: 2px solid rgb(250, 235, 146);
+}

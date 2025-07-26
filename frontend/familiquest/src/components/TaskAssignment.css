@@ -134,6 +134,81 @@ body, .assign-split-bg {
   background: #7C3AED;
 }
 
+.assign-error {
+  color: #dc3545;
+  background: #f8d7da;
+  border: 1px solid #f5c6cb;
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 16px;
+  font-size: 0.9rem;
+}
+
+.assign-recent-task {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  border-left: 4px solid #7C3AED;
+}
+
+.assign-task-title {
+  font-weight: 600;
+  color: #333;
+  flex: 1;
+}
+
+.assign-task-difficulty {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin: 0 8px;
+}
+
+.assign-task-difficulty.diff-easy {
+  background: #d4edda;
+  color: #155724;
+}
+
+.assign-task-difficulty.diff-medium {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.assign-task-difficulty.diff-hard {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+.assign-task-status {
+  font-size: 1.2rem;
+}
+
+.assign-task-status.completed {
+  color: #28a745;
+}
+
+.assign-task-status.pending {
+  color: #ffc107;
+}
+
+.assign-form-header {
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid #f8f9fa;
+}
+
+.assign-form-header h2 {
+  color: #333;
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin: 0;
+}
+
 .assign-progress-panel {
   flex: 2 1 0;
   background: #fff;
