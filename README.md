@@ -1,4 +1,4 @@
-# FamiliQuest
+# 🏰 FamiliQuest: Turn Your Family Chores into Epic Adventures!
 
 **Making Family Tasks Rewarding, One Quest at a Time**
 
