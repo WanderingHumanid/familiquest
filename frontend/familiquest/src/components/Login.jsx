@@ -1,15 +1,18 @@
 import React, { useState } from 'react';
 import ProfileSelector from './ProfileSelector';
 import './Login.css';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [profile, setProfile] = useState('');
+    const navigate = useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(`Logging in as ${profile}: ${username}`);
+        // Simulate login logic
+        navigate('/dashboard');
     };
 
     return (
