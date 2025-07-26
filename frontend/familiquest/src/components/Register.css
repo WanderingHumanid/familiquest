@@ -1,0 +1,15 @@
+.register-container {
+    position: center;
+    color: #9929ea;
+    padding: 3rem;
+    width: 50%;
+    margin: 0 auto;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 1.5rem;
+    box-shadow: 0 4px 24px rgba(153, 41, 234, 0.10);
+}
+
+.input-group {
+    padding: 10px;
+}

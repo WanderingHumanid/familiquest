@@ -12,7 +12,6 @@ function Navbar() {
                 <li><Link to="/register">REGISTER</Link></li>
                 <li><Link to="/login">LOGIN</Link></li>
                 <li><Link to="/about">ABOUT</Link></li>
-                <li><Link to="/contact">CONTACT</Link></li>
             </ul>
         </div>
     );
