@@ -7,8 +7,9 @@ import Register from './components/Register';
 import TaskAssignment from './components/TaskAssignment';
 import Dashboard from './components/Dashboard';
 import CustomizeAvatar from './components/CustomizeAvatar';
+import About from './components/About';
 import { TaskProvider, useTaskContext } from './components/TaskContext';
-import './App.css';
+//import './App.css';
 
 // Protected Route Component
 const ProtectedRoute = ({ children }) => {
@@ -28,6 +29,9 @@ const AppContent = () => {
           <Route path="/" element={user ? <Navigate to="/dashboard" /> : <Home />} />
           <Route path="/login" element={user ? <Navigate to="/dashboard" /> : <Login />} />
           <Route path="/register" element={user ? <Navigate to="/dashboard" /> : <Register />} />
+          <Route path="/about" element={<About />} />
+          
+          {/* Protected Routes */}
           <Route 
             path="/dashboard" 
             element={

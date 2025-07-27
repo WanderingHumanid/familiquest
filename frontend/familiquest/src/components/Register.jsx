@@ -9,13 +9,15 @@ const Register = () => {
   const [profileType, setProfileType] = useState('');
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [alreadyRegistered, setAlreadyRegistered] = useState(false);
   const navigate = useNavigate();
-  const { login } = useTaskContext();
+  const { login, user } = useTaskContext();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError(null);
     setLoading(true);
+    setAlreadyRegistered(false);
     try {
       // Register user
       const res = await fetch('http://localhost:5000/api/register', {
@@ -29,7 +31,12 @@ const Register = () => {
       await login(username, password, profileType);
       navigate('/dashboard');
     } catch (err) {
-      setError(err.message);
+      // If user is already logged in and a network error occurs, show custom message
+      if (user && (err.message === 'Failed to fetch' || err.message === 'NetworkError when attempting to fetch resource.')) {
+        setAlreadyRegistered(true);
+      } else {
+        setError(err.message);
+      }
     } finally {
       setLoading(false);
     }
@@ -63,8 +70,8 @@ const Register = () => {
         </div>
         <div className="input-group">
           <label>Profile Type:</label>
-          <div style={{ display: 'flex', gap: '2rem', marginTop: '0.5rem' }}>
-            <label>
+          <div className="profile-radio-group">
+            <label className="profile-radio-label">
               <input
                 type="radio"
                 name="profileType"
@@ -74,9 +81,10 @@ const Register = () => {
                 required
                 disabled={loading}
               />
+              <span className="profile-radio-custom"></span>
               Parent
             </label>
-            <label>
+            <label className="profile-radio-label">
               <input
                 type="radio"
                 name="profileType"
@@ -86,11 +94,19 @@ const Register = () => {
                 required
                 disabled={loading}
               />
+              <span className="profile-radio-custom"></span>
               Child
             </label>
           </div>
         </div>
-        {error && <div className="error-message">{error}</div>}
+        {alreadyRegistered ? (
+          <div className="error-message">
+            This user is already registered and logged in.<br />
+            <button type="button" className="login-button" onClick={() => navigate('/login')} style={{ marginTop: '12px' }}>
+              Go to Login
+            </button>
+          </div>
+        ) : error && <div className="error-message">{error}</div>}
         <button type="submit" className="login-button" disabled={loading || !profileType}>
           {loading ? 'Registering...' : 'Register'}
         </button>
