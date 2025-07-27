@@ -23,5 +23,6 @@ class Quest(db.Model):
     xp = db.Column(db.Integer)
     difficulty = db.Column(db.String(20), default='Easy')  # Easy, Medium, Hard
     assigned_to = db.Column(db.Integer, db.ForeignKey('user.id'))
+    assigned_by = db.Column(db.Integer, db.ForeignKey('user.id'))  # Parent who assigned the task
     completed = db.Column(db.Boolean, default=False)
     verified = db.Column(db.Boolean, default=False)  # Parent verification status

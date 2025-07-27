@@ -26,21 +26,20 @@ const Dashboard = () => {
       const childrenData = usersData.filter(user => user.role === 'child');
       setChildren(childrenData);
 
-      // Load tasks for all children
-      const allTasks = [];
-      for (const child of childrenData) {
-        try {
-          const childTasks = await api.getQuests(child.id);
-          allTasks.push(...childTasks.map(task => ({
-            ...task,
-            childName: child.username,
-            childId: child.id
-          })));
-        } catch (err) {
-          console.error(`Failed to load tasks for child ${child.username}:`, err);
-        }
-      }
-      setAllChildrenTasks(allTasks);
+      // Load only tasks assigned by this parent
+      const parentTasks = await api.getParentQuests(user.id);
+      
+      // Map child names to tasks
+      const tasksWithChildNames = parentTasks.map(task => {
+        const child = childrenData.find(child => child.id === task.assigned_to);
+        return {
+          ...task,
+          childName: child ? child.username : 'Unknown',
+          childId: task.assigned_to
+        };
+      });
+      
+      setAllChildrenTasks(tasksWithChildNames);
     } catch (err) {
       console.error('Failed to load children and tasks:', err);
     }

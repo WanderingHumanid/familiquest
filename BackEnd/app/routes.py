@@ -43,7 +43,8 @@ def create_quest():
         description=data['description'], 
         xp=xp,
         difficulty=data.get('difficulty', 'Easy'),
-        assigned_to=data['assigned_to']
+        assigned_to=data['assigned_to'],
+        assigned_by=data['assigned_by']  # Parent who is assigning the task
     )
     db.session.add(quest)
     db.session.commit()
@@ -60,6 +61,20 @@ def get_quests(user_id):
         'difficulty': q.difficulty,
         'completed': q.completed,
         'verified': q.verified
+    } for q in quests])
+
+@main.route('/api/parent-quests/<int:parent_id>', methods=['GET'])
+def get_parent_quests(parent_id):
+    quests = Quest.query.filter_by(assigned_by=parent_id).all()
+    return jsonify([{
+        'id': q.id,
+        'title': q.title,
+        'description': q.description,
+        'xp': q.xp,
+        'difficulty': q.difficulty,
+        'completed': q.completed,
+        'verified': q.verified,
+        'assigned_to': q.assigned_to
     } for q in quests])
 
 @main.route('/api/quests', methods=['GET'])

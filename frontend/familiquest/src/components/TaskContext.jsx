@@ -131,7 +131,8 @@ export const TaskProvider = ({ children }) => {
         taskData.title,
         taskData.description,
         taskData.difficulty,
-        assigneeId
+        assigneeId,
+        user.id  // Parent ID who is assigning the task
       );
       
       // Reload tasks to get the updated list

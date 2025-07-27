@@ -38,10 +38,10 @@ export const registerUser = async (username, password, role) => {
 };
 
 // Quest/Task management
-export const createQuest = async (title, description, difficulty, assignedTo) => {
+export const createQuest = async (title, description, difficulty, assignedTo, assignedBy) => {
   return apiCall('/quest', {
     method: 'POST',
-    body: JSON.stringify({ title, description, difficulty, assigned_to: assignedTo }),
+    body: JSON.stringify({ title, description, difficulty, assigned_to: assignedTo, assigned_by: assignedBy }),
   });
 };
 
@@ -51,6 +51,10 @@ export const getQuests = async (userId) => {
 
 export const getAllQuests = async () => {
   return apiCall('/quests');
+};
+
+export const getParentQuests = async (parentId) => {
+  return apiCall(`/parent-quests/${parentId}`);
 };
 
 export const completeQuest = async (questId) => {
