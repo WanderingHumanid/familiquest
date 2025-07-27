@@ -115,6 +115,12 @@ export const TaskProvider = ({ children }) => {
   const addTask = async (taskData) => {
     if (!user) return;
     
+    // Only parents can assign tasks
+    if (user.type !== 'parent') {
+      setError('Only parents can assign tasks');
+      throw new Error('Only parents can assign tasks');
+    }
+    
     setLoading(true);
     setError(null);
     

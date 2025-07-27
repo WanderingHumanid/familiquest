@@ -4,6 +4,7 @@ body, .dashboard-split-bg {
   margin: 0;
   font-family: 'Segoe UI', 'Inter', Arial, sans-serif;
   padding-top: 80px;
+  width: 100vw;
 }
 
 .dashboard-split-container {

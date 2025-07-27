@@ -19,6 +19,18 @@ const ProtectedRoute = ({ children }) => {
   return user ? children : <Navigate to="/login" />;
 };
 
+// Parent Only Route Component
+const ParentOnlyRoute = ({ children }) => {
+  const { user } = useTaskContext();
+  if (!user) {
+    return <Navigate to="/login" />;
+  }
+  if (user.type !== 'parent') {
+    return <Navigate to="/dashboard" />;
+  }
+  return children;
+};
+
 // App Content Component
 const AppContent = () => {
   const { user, logout } = useTaskContext();
@@ -49,9 +61,9 @@ const AppContent = () => {
           <Route 
             path="/assign-task" 
             element={
-              <ProtectedRoute>
+              <ParentOnlyRoute>
                 <TaskAssignment />
-              </ProtectedRoute>
+              </ParentOnlyRoute>
             } 
           />
           <Route 
