@@ -8,7 +8,7 @@ import TaskAssignment from './components/TaskAssignment';
 import Dashboard from './components/Dashboard';
 import CustomizeAvatar from './components/CustomizeAvatar';
 import About from './components/About';
-import Leaderboard from './components/Leaderboard';
+// import Leaderboard from './components/Leaderboard';
 
 import { TaskProvider, useTaskContext } from './components/TaskContext';
 //import './App.css';
@@ -19,6 +19,7 @@ const ProtectedRoute = ({ children }) => {
   return user ? children : <Navigate to="/login" />;
 };
 
+/*
 // Parent Only Route Component
 const ParentOnlyRoute = ({ children }) => {
   const { user } = useTaskContext();
@@ -30,6 +31,7 @@ const ParentOnlyRoute = ({ children }) => {
   }
   return children;
 };
+*/
 
 // App Content Component
 const AppContent = () => {

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTaskContext } from './TaskContext';
-import * as api from '../services/api';
 import './Login.css';
 
 const Register = () => {
@@ -20,15 +19,21 @@ const Register = () => {
     setLoading(true);
     setAlreadyRegistered(false);
     try {
-      // Register user using API service
-      await api.registerUser(username, password, profileType);
+      // Register user
+      const res = await fetch('http://localhost:5000/api/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, password, role: profileType })
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.message || 'Registration failed');
       // Auto-login after registration
       await login(username, password, profileType);
       navigate('/dashboard');
     } catch (err) {
       // If user is already logged in and a network error occurs, show custom message
       if (user && (err.message === 'Failed to fetch' || err.message === 'NetworkError when attempting to fetch resource.')) {
-        setError("A user with this username already exists. Choose another username or login.");
+        setAlreadyRegistered(true);
       } else {
         setError(err.message);
       }
