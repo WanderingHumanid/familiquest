@@ -149,3 +149,15 @@ def get_users():
         'level': user.level,
         'xp': user.xp
     } for user in users])
+
+@main.route('/api/leaderboard', methods=['GET'])
+def leaderboard():
+    children = User.query.filter_by(role='child').order_by(User.xp.desc()).all()
+    return jsonify([
+        {
+            'username': child.username,
+            'xp': child.xp,
+            'points': child.points,
+            'level': child.level
+        } for child in children
+    ])

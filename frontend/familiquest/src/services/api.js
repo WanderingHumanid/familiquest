@@ -88,3 +88,7 @@ export const updateUserAvatar = async (userId, avatarData) => {
 export const getUsers = async () => {
   return apiCall('/users');
 }; 
+
+export const getLeaderboard = async () => {
+  return apiCall('/leaderboard');
+}; 

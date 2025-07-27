@@ -8,6 +8,7 @@ import TaskAssignment from './components/TaskAssignment';
 import Dashboard from './components/Dashboard';
 import CustomizeAvatar from './components/CustomizeAvatar';
 import About from './components/About';
+import Leaderboard from './components/Leaderboard';
 
 import { TaskProvider, useTaskContext } from './components/TaskContext';
 //import './App.css';
@@ -38,7 +39,10 @@ const AppContent = () => {
             path="/dashboard" 
             element={
               <ProtectedRoute>
-                <Dashboard />
+                <>
+                  <Dashboard />
+                  <Leaderboard />
+                </>
               </ProtectedRoute>
             } 
           />
