@@ -17,13 +17,12 @@ body {
 
 /* Hero Section */
 .hero {
-  background: linear-gradient(120deg, rgb(255,255,255) 80%, rgb(204,102,218) 100%);
   border-radius: 2rem;
   box-shadow: 0 8px 32px rgba(153, 41, 234, 0.15);
   padding: 3rem 2rem;
   max-width: 600px;
   margin-bottom: 2rem;
-  margin-top: 600px;
+  margin-top: 60px;
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -88,12 +87,11 @@ body {
 .feature-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 2rem;
+  gap: 5rem;
   width: 100%;
 }
 
 .feature-card {
-  background: linear-gradient(120deg, rgb(255,255,255) 80%, rgb(204,102,218) 100%);
   padding: 2rem 1.5rem;
   border-radius: 1.5rem;
   box-sizing: content-box;

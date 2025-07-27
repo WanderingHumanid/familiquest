@@ -39,7 +39,7 @@ h2 {
 .input-group label {
     color: #7C3AED;
     font-weight: 700;
-    font-size: 1.05rem;
+    font-size: 1rem;
 }
 .input-group input {
     width: 100%;
@@ -98,6 +98,76 @@ h2 {
     align-items: center;
     gap: 0.5rem;
 }
+
+/* Custom radio button styles for profile type */
+.input-group .profile-radio-group {
+  display: flex;
+  gap: 2rem;
+  margin-top: 0.5rem;
+}
+
+.profile-radio-label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-weight: 600;
+  color: #7C3AED;
+  font-size: 1.08rem;
+  position: relative;
+  padding-left: 32px;
+  margin-bottom: 0;
+  user-select: none;
+}
+
+.profile-radio-label input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.profile-radio-custom {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 22px;
+  width: 22px;
+  background: #f7f6fb;
+  border: 2.5px solid #A78BFA;
+  border-radius: 50%;
+  transition: border 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px rgba(124, 58, 237, 0.10);
+}
+
+.profile-radio-label input[type="radio"]:checked ~ .profile-radio-custom {
+  border: 2.5px solid #7C3AED;
+  background: linear-gradient(135deg, #7C3AED 60%, #A855F7 100%);
+}
+
+.profile-radio-custom:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.profile-radio-label input[type="radio"]:checked ~ .profile-radio-custom:after {
+  display: block;
+}
+
+.profile-radio-label .profile-radio-custom:after {
+  top: 5px;
+  left: 5px;
+  right: 5px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #e4e2e5;
+  padding: 1px;
+  margin: auto;
+}
+
 @media (max-width: 600px) {
     .login-container {
         padding: 24px 10px 18px 10px;

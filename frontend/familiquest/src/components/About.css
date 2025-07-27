@@ -1,0 +1,16 @@
+body {
+    background-color: white;
+    text-align: center;
+    justify-content: center;
+}
+
+.about-container {
+    color: #9929ea;
+    border: 1px solid #9929ea;
+    box-sizing: content-box;
+    border-radius: 10px;
+    padding: 5px;
+    margin: auto;
+    width: 50%;
+    font-weight: 1rem;
+}

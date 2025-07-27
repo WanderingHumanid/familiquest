@@ -51,8 +51,8 @@ const Login = () => {
                 </div>
                 <div className="input-group">
                     <label>Profile Type:</label>
-                    <div style={{ display: 'flex', gap: '2rem', marginTop: '0.5rem' }}>
-                        <label>
+                    <div className="profile-radio-group">
+                        <label className="profile-radio-label">
                             <input
                                 type="radio"
                                 name="profileType"
@@ -62,9 +62,10 @@ const Login = () => {
                                 required
                                 disabled={loading}
                             />
+                            <span className="profile-radio-custom"></span>
                             Parent
                         </label>
-                        <label>
+                        <label className="profile-radio-label">
                             <input
                                 type="radio"
                                 name="profileType"
@@ -74,6 +75,7 @@ const Login = () => {
                                 required
                                 disabled={loading}
                             />
+                            <span className="profile-radio-custom"></span>
                             Child
                         </label>
                     </div>
