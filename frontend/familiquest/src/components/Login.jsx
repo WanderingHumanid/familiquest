@@ -6,7 +6,7 @@ const Login = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [profile, setProfile] = useState('');
-    const { login, loading, error } = useTaskContext();
+    const { login, loading, error, clearCache } = useTaskContext();
     const [localError, setLocalError] = useState(null);
 
     const handleSubmit = async (e) => {
@@ -83,6 +83,23 @@ const Login = () => {
                 {(localError || error) && <div className="error-message">{localError || error}</div>}
                 <button type="submit" className="login-button" disabled={loading}>
                     {loading ? 'Logging in...' : 'Login'}
+                </button>
+                <button 
+                    type="button" 
+                    onClick={clearCache}
+                    style={{
+                        background: '#6B7280',
+                        color: 'white',
+                        border: 'none',
+                        borderRadius: '6px',
+                        padding: '8px 16px',
+                        fontSize: '0.9rem',
+                        cursor: 'pointer',
+                        marginTop: '12px',
+                        width: '100%'
+                    }}
+                >
+                    Clear Cache & Reset
                 </button>
             </form>
         </div>

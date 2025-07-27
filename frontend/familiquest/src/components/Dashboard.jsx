@@ -54,6 +54,24 @@ const Dashboard = () => {
     }
   };
 
+  const handleVerifyTask = async (taskId) => {
+    try {
+      await api.verifyQuest(taskId);
+      loadChildrenAndTasks(); // Refresh the list
+    } catch (err) {
+      console.error('Failed to verify task:', err);
+    }
+  };
+
+  const handleRejectTask = async (taskId) => {
+    try {
+      await api.rejectQuest(taskId);
+      loadChildrenAndTasks(); // Refresh the list
+    } catch (err) {
+      console.error('Failed to reject task:', err);
+    }
+  };
+
   if (!user) {
     return (
       <div className="dashboard-split-bg">
@@ -99,17 +117,51 @@ const Dashboard = () => {
                   <li className="dashboard-task-empty">No tasks assigned to children yet. Assign one to get started!</li>
                 )}
                 {allChildrenTasks.map(task => (
-                  <li key={task.id} className={`dashboard-task-card${task.completed ? ' completed' : ''}`}>
+                  <li key={task.id} className={`dashboard-task-card${task.completed ? ' completed' : ''}${task.verified ? ' verified' : ''}`}>
                     <span className="dashboard-task-icon" role="img" aria-label="task">📝</span>
                     <div className="dashboard-task-info">
                       <span className="dashboard-task-title">{task.title}</span>
                       <span className="dashboard-task-meta">
                         <span className={`dashboard-task-difficulty diff-${task.difficulty.toLowerCase()}`}>{task.difficulty}</span>
                         <span className="dashboard-task-assignee">Assigned to: {task.childName}</span>
-                        {task.completed && <span className="dashboard-task-status" title="Completed">✔️</span>}
-                        {!task.completed && <span className="dashboard-task-status" title="Pending">⏳</span>}
+                        {task.verified && <span className="dashboard-task-status" title="Verified">✅</span>}
+                        {task.completed && !task.verified && <span className="dashboard-task-status" title="Pending Verification">⏳</span>}
+                        {!task.completed && <span className="dashboard-task-status" title="Not Started">📋</span>}
                       </span>
                     </div>
+                    {task.completed && !task.verified && (
+                      <div className="dashboard-task-actions">
+                        <button 
+                          onClick={() => handleVerifyTask(task.id)}
+                          style={{
+                            background: '#10B981',
+                            color: 'white',
+                            border: 'none',
+                            borderRadius: '6px',
+                            padding: '4px 8px',
+                            fontSize: '0.8rem',
+                            cursor: 'pointer',
+                            marginRight: '8px'
+                          }}
+                        >
+                          Verify
+                        </button>
+                        <button 
+                          onClick={() => handleRejectTask(task.id)}
+                          style={{
+                            background: '#EF4444',
+                            color: 'white',
+                            border: 'none',
+                            borderRadius: '6px',
+                            padding: '4px 8px',
+                            fontSize: '0.8rem',
+                            cursor: 'pointer'
+                          }}
+                        >
+                          Reject
+                        </button>
+                      </div>
+                    )}
                   </li>
                 ))}
               </>
@@ -120,13 +172,14 @@ const Dashboard = () => {
                   <li className="dashboard-task-empty">No tasks yet! Enjoy your free time!</li>
                 )}
                 {tasks.map(task => (
-                  <li key={task.id} className={`dashboard-task-card${task.completed ? ' completed' : ''}`}>
+                  <li key={task.id} className={`dashboard-task-card${task.completed ? ' completed' : ''}${task.verified ? ' verified' : ''}`}>
                     <span className="dashboard-task-icon" role="img" aria-label="task">📝</span>
                     <div className="dashboard-task-info">
                       <span className="dashboard-task-title">{task.title}</span>
                       <span className="dashboard-task-meta">
                         <span className={`dashboard-task-difficulty diff-${task.difficulty.toLowerCase()}`}>{task.difficulty}</span>
-                        {task.completed && <span className="dashboard-task-status" title="Completed">✔️</span>}
+                        {task.verified && <span className="dashboard-task-status" title="Verified">✅</span>}
+                        {task.completed && !task.verified && <span className="dashboard-task-status" title="Pending Verification">⏳</span>}
                         {!task.completed && (
                           <button 
                             onClick={() => handleCompleteTask(task.id)}

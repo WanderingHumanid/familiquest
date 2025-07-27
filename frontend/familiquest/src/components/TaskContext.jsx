@@ -30,10 +30,28 @@ export const TaskProvider = ({ children }) => {
     const savedUser = localStorage.getItem('user');
     if (savedUser) {
       const userData = JSON.parse(savedUser);
-      setUser(userData);
-      loadUserData(userData.id);
+      // Clear invalid user data if it exists
+      clearInvalidUserData(userData);
     }
   }, []);
+
+  const clearInvalidUserData = async (userData) => {
+    try {
+      // Try to load user data to see if the user still exists
+      await api.getUserProgress(userData.id);
+      // If successful, set the user and load data
+      setUser(userData);
+      loadUserData(userData.id);
+    } catch (err) {
+      // If user doesn't exist, clear localStorage and reset state
+      console.log('User no longer exists, clearing cached data');
+      localStorage.removeItem('user');
+      setUser(null);
+      setTasks([]);
+      setAvatar(defaultAvatar);
+      setUserProgress({ level: 1, xp: 0, points: 0, streak: 0 });
+    }
+  };
 
   const loadUserData = async (userId) => {
     if (!userId) return;
@@ -164,6 +182,14 @@ export const TaskProvider = ({ children }) => {
     }
   };
 
+  const clearCache = () => {
+    localStorage.removeItem('user');
+    setUser(null);
+    setTasks([]);
+    setAvatar(defaultAvatar);
+    setUserProgress({ level: 1, xp: 0, points: 0, streak: 0 });
+  };
+
   return (
     <TaskContext.Provider value={{
       user,
@@ -179,6 +205,7 @@ export const TaskProvider = ({ children }) => {
       loading,
       error,
       refreshData,
+      clearCache,
     }}>
       {children}
     </TaskContext.Provider>
