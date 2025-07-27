@@ -62,6 +62,20 @@ def get_quests(user_id):
         'verified': q.verified
     } for q in quests])
 
+@main.route('/api/quests', methods=['GET'])
+def get_all_quests():
+    quests = Quest.query.all()
+    return jsonify([{
+        'id': q.id,
+        'title': q.title,
+        'description': q.description,
+        'xp': q.xp,
+        'difficulty': q.difficulty,
+        'completed': q.completed,
+        'verified': q.verified,
+        'assigned_to': q.assigned_to
+    } for q in quests])
+
 @main.route('/api/quests/<int:quest_id>/complete', methods=['PUT'])
 def complete_quest(quest_id):
     quest = Quest.query.get_or_404(quest_id)
@@ -149,3 +163,15 @@ def get_users():
         'level': user.level,
         'xp': user.xp
     } for user in users])
+
+@main.route('/api/leaderboard', methods=['GET'])
+def leaderboard():
+    children = User.query.filter_by(role='child').order_by(User.xp.desc()).all()
+    return jsonify([
+        {
+            'username': child.username,
+            'xp': child.xp,
+            'points': child.points,
+            'level': child.level
+        } for child in children
+    ])

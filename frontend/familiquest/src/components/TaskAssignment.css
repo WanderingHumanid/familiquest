@@ -4,28 +4,26 @@ body, .assign-split-bg {
   margin: 0;
   font-family: 'Segoe UI', 'Inter', Arial, sans-serif;
   padding-top: 80px;
+  width: 100vw;
 }
 
 .assign-split-container {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
-  gap: 40px;
-  max-width: 1200px;
+  align-items: center;
+  max-width: 600px;
   margin: 0 auto;
   padding: 0 0 32px 0;
 }
 
 .assign-form-panel {
-  flex: 3 1 0;
   background: #fff;
   border-radius: 24px;
   box-shadow: 0 4px 24px rgba(124, 58, 237, 0.08);
   padding: 48px 40px 36px 40px;
-  min-width: 320px;
-  max-width: 700px;
-  width: 60%;
+  width: 100%;
+  max-width: 500px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -144,57 +142,9 @@ body, .assign-split-bg {
   font-size: 0.9rem;
 }
 
-.assign-recent-task {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 12px;
-  background: #f8f9fa;
-  border-radius: 8px;
-  margin-bottom: 8px;
-  border-left: 4px solid #7C3AED;
-}
 
-.assign-task-title {
-  font-weight: 600;
-  color: #333;
-  flex: 1;
-}
 
-.assign-task-difficulty {
-  padding: 4px 8px;
-  border-radius: 4px;
-  font-size: 0.8rem;
-  font-weight: 600;
-  margin: 0 8px;
-}
 
-.assign-task-difficulty.diff-easy {
-  background: #d4edda;
-  color: #155724;
-}
-
-.assign-task-difficulty.diff-medium {
-  background: #fff3cd;
-  color: #856404;
-}
-
-.assign-task-difficulty.diff-hard {
-  background: #f8d7da;
-  color: #721c24;
-}
-
-.assign-task-status {
-  font-size: 1.2rem;
-}
-
-.assign-task-status.completed {
-  color: #28a745;
-}
-
-.assign-task-status.pending {
-  color: #ffc107;
-}
 
 .assign-form-header {
   margin-bottom: 24px;
@@ -209,92 +159,18 @@ body, .assign-split-bg {
   margin: 0;
 }
 
-.assign-progress-panel {
-  flex: 2 1 0;
-  background: #fff;
-  border-radius: 24px;
-  box-shadow: 0 4px 24px rgba(124, 58, 237, 0.08);
-  padding: 48px 32px 36px 32px;
-  min-width: 260px;
-  max-width: 400px;
-  width: 40%;
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  align-items: center;
-}
-.assign-progress-card {
-  background: #F7F6FB;
-  border-radius: 14px;
-  box-shadow: 0 1px 4px rgba(124, 58, 237, 0.06);
-  padding: 18px 18px 14px 18px;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 8px;
-}
-.assign-progress-card h3 {
-  color: #7C3AED;
-  font-size: 1.1rem;
-  font-weight: 800;
-  margin: 0 0 8px 0;
-}
-.assign-task-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  width: 100%;
-}
-.assign-task-placeholder {
-  color: #A0AEC0;
-  font-size: 1rem;
-  padding: 8px 0;
-}
-.assign-progress-placeholder {
-  display: flex;
-  align-items: center;
-  gap: 18px;
-  margin-bottom: 8px;
-}
-.assign-progress-avatar {
-  width: 48px;
-  height: 48px;
-  background: #E9D8FD;
-  border-radius: 50%;
-  box-shadow: 0 1px 4px rgba(124, 58, 237, 0.10);
-}
-.assign-progress-details {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-.assign-progress-detail {
-  color: #2D2346;
-  font-size: 1rem;
-  font-weight: 600;
-  display: flex;
-  gap: 8px;
-}
-.assign-progress-detail .placeholder {
-  color: #A0AEC0;
-  font-weight: 400;
-}
-.assign-progress-note {
-  color: #A0AEC0;
-  font-size: 0.98rem;
-  margin-top: 4px;
-}
-@media (max-width: 1000px) {
+
+
+
+
+
+
+
+@media (max-width: 600px) {
   .assign-split-container {
-    flex-direction: column;
-    gap: 24px;
-    padding: 24px 0 16px 0;
-    align-items: stretch;
+    padding: 24px 16px 16px 16px;
   }
-  .assign-form-panel, .assign-progress-panel {
-    width: 100%;
-    max-width: 98vw;
-    min-width: unset;
+  .assign-form-panel {
+    padding: 32px 24px 24px 24px;
   }
 } 

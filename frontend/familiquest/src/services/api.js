@@ -49,6 +49,10 @@ export const getQuests = async (userId) => {
   return apiCall(`/quests/${userId}`);
 };
 
+export const getAllQuests = async () => {
+  return apiCall('/quests');
+};
+
 export const completeQuest = async (questId) => {
   return apiCall(`/quests/${questId}/complete`, {
     method: 'PUT',
@@ -87,4 +91,8 @@ export const updateUserAvatar = async (userId, avatarData) => {
 // Get all users (for parent to assign tasks to children)
 export const getUsers = async () => {
   return apiCall('/users');
+}; 
+
+export const getLeaderboard = async () => {
+  return apiCall('/leaderboard');
 }; 
