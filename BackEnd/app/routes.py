@@ -1,6 +1,5 @@
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask import Blueprint, request, jsonify
-from flask_cors import cross_origin
 from .models import User, Quest
 from . import db
 
@@ -11,7 +10,6 @@ def home():
     return jsonify({'message': 'FamiliQuest Backend is running'})
 
 @main.route('/api/register', methods=['POST'])
-@cross_origin()
 def register():
     data = request.get_json()
     hashed_password = generate_password_hash(data['password'])
@@ -21,7 +19,6 @@ def register():
     return jsonify({'message': 'User registered successfully!', 'user_id': user.id})
 
 @main.route('/api/login', methods=['POST'])
-@cross_origin()
 def login():
     data = request.get_json()
     user = User.query.filter_by(username=data['username'], role=data['role']).first()
@@ -36,10 +33,8 @@ def login():
         return jsonify({'message': 'Invalid credentials'}), 401
 
 @main.route('/api/quest', methods=['POST'])
-@cross_origin()
 def create_quest():
     data = request.get_json()
-    # Map difficulty to XP based on gamification rules
     difficulty_xp = {'Easy': 15, 'Medium': 30, 'Hard': 50}
     xp = difficulty_xp.get(data.get('difficulty', 'Easy'), 15)
     
@@ -55,7 +50,6 @@ def create_quest():
     return jsonify({'message': 'Quest created successfully!', 'quest_id': quest.id})
 
 @main.route('/api/quests/<int:user_id>', methods=['GET'])
-@cross_origin()
 def get_quests(user_id):
     quests = Quest.query.filter_by(assigned_to=user_id).all()
     return jsonify([{
@@ -68,32 +62,29 @@ def get_quests(user_id):
     } for q in quests])
 
 @main.route('/api/quests/<int:quest_id>/complete', methods=['PUT'])
-@cross_origin()
 def complete_quest(quest_id):
     quest = Quest.query.get_or_404(quest_id)
     quest.completed = True
     
-    # Update user progress
     user = User.query.get(quest.assigned_to)
-    user.xp += quest.xp
-    user.points += quest.xp * 10  # 10 points per XP
-    user.streak += 1
-    
-    # Simple level calculation
-    if user.xp >= 500:
-        user.level = 4
-    elif user.xp >= 250:
-        user.level = 3
-    elif user.xp >= 100:
-        user.level = 2
-    else:
-        user.level = 1
+    if user:
+        user.xp += quest.xp
+        user.points += quest.xp * 10
+        user.streak += 1
+        
+        if user.xp >= 500:
+            user.level = 4
+        elif user.xp >= 250:
+            user.level = 3
+        elif user.xp >= 100:
+            user.level = 2
+        else:
+            user.level = 1
     
     db.session.commit()
     return jsonify({'message': 'Quest completed!', 'xp_gained': quest.xp})
 
 @main.route('/api/user/<int:user_id>/progress', methods=['GET'])
-@cross_origin()
 def get_user_progress(user_id):
     user = User.query.get_or_404(user_id)
     return jsonify({
@@ -106,7 +97,6 @@ def get_user_progress(user_id):
     })
 
 @main.route('/api/user/<int:user_id>/avatar', methods=['GET'])
-@cross_origin()
 def get_user_avatar(user_id):
     user = User.query.get_or_404(user_id)
     return jsonify({
@@ -117,7 +107,6 @@ def get_user_avatar(user_id):
     })
 
 @main.route('/api/user/<int:user_id>/avatar', methods=['PUT'])
-@cross_origin()
 def update_user_avatar(user_id):
     user = User.query.get_or_404(user_id)
     data = request.get_json()
@@ -131,7 +120,6 @@ def update_user_avatar(user_id):
     return jsonify({'message': 'Avatar updated successfully!'})
 
 @main.route('/api/users', methods=['GET'])
-@cross_origin()
 def get_users():
     users = User.query.all()
     return jsonify([{

@@ -8,6 +8,7 @@ import TaskAssignment from './components/TaskAssignment';
 import Dashboard from './components/Dashboard';
 import CustomizeAvatar from './components/CustomizeAvatar';
 import About from './components/About';
+
 import { TaskProvider, useTaskContext } from './components/TaskContext';
 //import './App.css';
 
@@ -30,6 +31,7 @@ const AppContent = () => {
           <Route path="/login" element={user ? <Navigate to="/dashboard" /> : <Login />} />
           <Route path="/register" element={user ? <Navigate to="/dashboard" /> : <Register />} />
           <Route path="/about" element={<About />} />
+
           
           {/* Protected Routes */}
           <Route 
