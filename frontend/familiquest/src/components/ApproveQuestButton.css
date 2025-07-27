@@ -1,0 +1,25 @@
+.approve-quest-btn {
+  background: linear-gradient(135deg, #7C3AED, #A855F7);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 8px 20px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  margin-left: 12px;
+  box-shadow: 0 2px 8px rgba(124, 58, 237, 0.10);
+  transition: background 0.2s, transform 0.2s;
+}
+
+.approve-quest-btn:disabled {
+  background: #E9D8FD;
+  color: #A78BFA;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.approve-quest-btn:hover:not(:disabled) {
+  background: #A78BFA;
+  transform: scale(1.05);
+}

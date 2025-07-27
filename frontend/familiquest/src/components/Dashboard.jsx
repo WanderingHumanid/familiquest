@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import * as api from '../services/api';
 import Avatar from './Avatar';
 import './Dashboard.css';
+import ApproveQuestButton from './ApproveQuestButton';
 
 const Dashboard = () => {
   const { user, tasks, userProgress, completeTask, loading, error } = useTaskContext();
@@ -121,6 +122,7 @@ const Dashboard = () => {
                     <span className="dashboard-task-icon" role="img" aria-label="task">📝</span>
                     <div className="dashboard-task-info">
                       <span className="dashboard-task-title">{task.title}</span>
+                      <ApproveQuestButton questId={task.id} />
                       <span className="dashboard-task-meta">
                         <span className={`dashboard-task-difficulty diff-${task.difficulty.toLowerCase()}`}>{task.difficulty}</span>
                         <span className="dashboard-task-assignee">Assigned to: {task.childName}</span>
