@@ -28,7 +28,7 @@ const Register = () => {
     } catch (err) {
       // If user is already logged in and a network error occurs, show custom message
       if (user && (err.message === 'Failed to fetch' || err.message === 'NetworkError when attempting to fetch resource.')) {
-        setAlreadyRegistered(true);
+        setError("A user with this username already exists. Choose another username or login.");
       } else {
         setError(err.message);
       }
