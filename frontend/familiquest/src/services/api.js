@@ -55,6 +55,18 @@ export const completeQuest = async (questId) => {
   });
 };
 
+export const verifyQuest = async (questId) => {
+  return apiCall(`/quests/${questId}/verify`, {
+    method: 'PUT',
+  });
+};
+
+export const rejectQuest = async (questId) => {
+  return apiCall(`/quests/${questId}/reject`, {
+    method: 'PUT',
+  });
+};
+
 // User progress
 export const getUserProgress = async (userId) => {
   return apiCall(`/user/${userId}/progress`);

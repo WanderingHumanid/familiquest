@@ -58,14 +58,25 @@ def get_quests(user_id):
         'description': q.description,
         'xp': q.xp,
         'difficulty': q.difficulty,
-        'completed': q.completed
+        'completed': q.completed,
+        'verified': q.verified
     } for q in quests])
 
 @main.route('/api/quests/<int:quest_id>/complete', methods=['PUT'])
 def complete_quest(quest_id):
     quest = Quest.query.get_or_404(quest_id)
     quest.completed = True
+    # Don't award points yet - wait for parent verification
     
+    db.session.commit()
+    return jsonify({'message': 'Quest completed! Waiting for parent verification.'})
+
+@main.route('/api/quests/<int:quest_id>/verify', methods=['PUT'])
+def verify_quest(quest_id):
+    quest = Quest.query.get_or_404(quest_id)
+    quest.verified = True
+    
+    # Award points only after verification
     user = User.query.get(quest.assigned_to)
     if user:
         user.xp += quest.xp
@@ -82,7 +93,16 @@ def complete_quest(quest_id):
             user.level = 1
     
     db.session.commit()
-    return jsonify({'message': 'Quest completed!', 'xp_gained': quest.xp})
+    return jsonify({'message': 'Quest verified! Points awarded.', 'xp_gained': quest.xp})
+
+@main.route('/api/quests/<int:quest_id>/reject', methods=['PUT'])
+def reject_quest(quest_id):
+    quest = Quest.query.get_or_404(quest_id)
+    quest.completed = False  # Reset completion status
+    quest.verified = False
+    
+    db.session.commit()
+    return jsonify({'message': 'Quest rejected. Child needs to complete it again.'})
 
 @main.route('/api/user/<int:user_id>/progress', methods=['GET'])
 def get_user_progress(user_id):
