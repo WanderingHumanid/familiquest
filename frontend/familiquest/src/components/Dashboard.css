@@ -4,6 +4,7 @@ body, .dashboard-split-bg {
   margin: 0;
   font-family: 'Segoe UI', 'Inter', Arial, sans-serif;
   padding-top: 80px;
+  width: 100vw;
 }
 
 .dashboard-split-container {
@@ -121,6 +122,28 @@ body, .dashboard-split-bg {
 .dashboard-task-status {
   color: #7C3AED;
   font-size: 1.2em;
+}
+
+.dashboard-task-assignee {
+  font-size: 0.85rem;
+  color: #6B7280;
+  font-style: italic;
+}
+
+.dashboard-task-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.dashboard-task-card.verified {
+  border-left: 4px solid #10B981;
+  background-color: #F0FDF4;
+}
+
+.dashboard-task-card.completed:not(.verified) {
+  border-left: 4px solid #F59E0B;
+  background-color: #FFFBEB;
 }
 .dashboard-task-empty {
   color: #A0AEC0;

@@ -11,7 +11,7 @@ function Navbar({ user, onLogout }) {
                 {user ? (
                     <>
                         <li><Link to="/dashboard">DASHBOARD</Link></li>
-                        <li><Link to="/assign-task">ASSIGN TASK</Link></li>
+                        {user.type === 'parent' && <li><Link to="/assign-task">ASSIGN TASK</Link></li>}
                         <li><Link to="/customize-avatar">CUSTOMIZE</Link></li>
                         <li><button onClick={onLogout} className="logout-btn">LOGOUT</button></li>
                     </>

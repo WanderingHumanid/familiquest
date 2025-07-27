@@ -8,6 +8,8 @@ import TaskAssignment from './components/TaskAssignment';
 import Dashboard from './components/Dashboard';
 import CustomizeAvatar from './components/CustomizeAvatar';
 import About from './components/About';
+// import Leaderboard from './components/Leaderboard';
+
 import { TaskProvider, useTaskContext } from './components/TaskContext';
 //import './App.css';
 
@@ -16,6 +18,20 @@ const ProtectedRoute = ({ children }) => {
   const { user } = useTaskContext();
   return user ? children : <Navigate to="/login" />;
 };
+
+/*
+// Parent Only Route Component
+const ParentOnlyRoute = ({ children }) => {
+  const { user } = useTaskContext();
+  if (!user) {
+    return <Navigate to="/login" />;
+  }
+  if (user.type !== 'parent') {
+    return <Navigate to="/dashboard" />;
+  }
+  return children;
+};
+*/
 
 // App Content Component
 const AppContent = () => {
@@ -30,22 +46,26 @@ const AppContent = () => {
           <Route path="/login" element={user ? <Navigate to="/dashboard" /> : <Login />} />
           <Route path="/register" element={user ? <Navigate to="/dashboard" /> : <Register />} />
           <Route path="/about" element={<About />} />
+
           
           {/* Protected Routes */}
           <Route 
             path="/dashboard" 
             element={
               <ProtectedRoute>
-                <Dashboard />
+                <>
+                  <Dashboard />
+                  <Leaderboard />
+                </>
               </ProtectedRoute>
             } 
           />
           <Route 
             path="/assign-task" 
             element={
-              <ProtectedRoute>
+              <ParentOnlyRoute>
                 <TaskAssignment />
-              </ProtectedRoute>
+              </ParentOnlyRoute>
             } 
           />
           <Route 

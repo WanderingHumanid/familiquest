@@ -1,4 +1,4 @@
-const API_BASE_URL = 'http://localhost:5000/api';
+const API_BASE_URL = 'http://localhost:5001/api';
 
 // Helper function for API calls
 const apiCall = async (endpoint, options = {}) => {
@@ -49,8 +49,24 @@ export const getQuests = async (userId) => {
   return apiCall(`/quests/${userId}`);
 };
 
+export const getAllQuests = async () => {
+  return apiCall('/quests');
+};
+
 export const completeQuest = async (questId) => {
   return apiCall(`/quests/${questId}/complete`, {
+    method: 'PUT',
+  });
+};
+
+export const verifyQuest = async (questId) => {
+  return apiCall(`/quests/${questId}/verify`, {
+    method: 'PUT',
+  });
+};
+
+export const rejectQuest = async (questId) => {
+  return apiCall(`/quests/${questId}/reject`, {
     method: 'PUT',
   });
 };
@@ -75,4 +91,8 @@ export const updateUserAvatar = async (userId, avatarData) => {
 // Get all users (for parent to assign tasks to children)
 export const getUsers = async () => {
   return apiCall('/users');
+}; 
+
+export const getLeaderboard = async () => {
+  return apiCall('/leaderboard');
 }; 
