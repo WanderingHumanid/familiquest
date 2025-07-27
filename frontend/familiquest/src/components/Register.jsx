@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTaskContext } from './TaskContext';
+import * as api from '../services/api';
 import './Login.css';
 
 const Register = () => {
@@ -19,14 +20,8 @@ const Register = () => {
     setLoading(true);
     setAlreadyRegistered(false);
     try {
-      // Register user
-      const res = await fetch('http://localhost:5000/api/register', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username, password, role: profileType })
-      });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.message || 'Registration failed');
+      // Register user using API service
+      await api.registerUser(username, password, profileType);
       // Auto-login after registration
       await login(username, password, profileType);
       navigate('/dashboard');

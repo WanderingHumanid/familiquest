@@ -122,6 +122,12 @@ body, .dashboard-split-bg {
   color: #7C3AED;
   font-size: 1.2em;
 }
+
+.dashboard-task-assignee {
+  font-size: 0.85rem;
+  color: #6B7280;
+  font-style: italic;
+}
 .dashboard-task-empty {
   color: #A0AEC0;
   text-align: center;

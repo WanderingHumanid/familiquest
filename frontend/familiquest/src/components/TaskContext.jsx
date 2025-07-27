@@ -101,12 +101,13 @@ export const TaskProvider = ({ children }) => {
     setError(null);
     
     try {
-      // For now, assign to the current user (you can modify this for parent assigning to children)
+      // Use the assignee ID from taskData, or fall back to current user
+      const assigneeId = taskData.assignee || user.id;
       const response = await api.createQuest(
         taskData.title,
         taskData.description,
         taskData.difficulty,
-        user.id
+        assigneeId
       );
       
       // Reload tasks to get the updated list

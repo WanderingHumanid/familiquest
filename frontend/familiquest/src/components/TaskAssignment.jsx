@@ -68,6 +68,11 @@ const TaskAssignment = () => {
       setSuccessMessage('Task assigned successfully!');
       setTimeout(() => setSuccessMessage(''), 3000);
       loadRecentTasks(); // Refresh recent tasks
+      
+      // Refresh the parent's dashboard if they're on it
+      if (window.location.pathname === '/dashboard') {
+        window.location.reload();
+      }
     } catch (err) {
       console.error('Failed to assign task:', err);
     }
